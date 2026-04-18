@@ -93,6 +93,39 @@
       color: white;
       filter: brightness(1.1);
     }
+    /* 🌟 1. กล่อง Content Box เรืองแสงสีม่วง */
+    .content-box {
+      background-color: #2d2d2d;
+      border-radius: 20px;
+      padding: 40px;
+      /* เปลี่ยนสีขอบให้เป็นสีม่วงอ่อนเพื่อให้รับกับแสง */
+      border: 1px solid var(--jc-purple-light); 
+      /* ใช้ box-shadow ซ้อนกันเพื่อสร้างมิติเรืองแสง (นอกกล่องและในกล่อง) */
+      box-shadow: 0 0 25px rgba(155, 79, 150, 0.6), 
+                  inset 0 0 15px rgba(155, 79, 150, 0.2);
+      /* เพิ่ม Animation ให้แสงกระพริบเบาๆ เหมือนไฟนีออน (ถ้าชอบ) */
+      animation: pulse-glow-box 3s infinite alternate;
+    }
+
+    /* 🌟 2. ตัวหนังสือหัวข้อ เรืองแสงสีทอง */
+    .welcome-title {
+      color: var(--jc-gold);
+      font-weight: 700;
+      margin-bottom: 20px;
+      /* ใช้ text-shadow ซ้อนกันเพื่อให้ดูเปล่งประกาย */
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 
+                   0 0 20px rgba(212, 175, 55, 0.6);
+    }
+
+    /* 🌟 3. Animation ทำให้กล่องหายใจ (แสงสว่างขึ้น-ลงเบาๆ) */
+    @keyframes pulse-glow-box {
+      0% {
+        box-shadow: 0 0 20px rgba(155, 79, 150, 0.4), inset 0 0 10px rgba(155, 79, 150, 0.1);
+      }
+      100% {
+        box-shadow: 0 0 35px rgba(155, 79, 150, 0.8), inset 0 0 20px rgba(155, 79, 150, 0.3);
+      }
+    }
 
     /* Footer Style */
     footer {
@@ -114,19 +147,26 @@
   </nav>
 
   <div class="container flex-grow-1 pt-4">
-    
-    <div class="hero-section text-center mb-4"> 
-      <img src="https://raw.githubusercontent.com/thiti0365/images/main/เสื้อรวมเจซี.png" alt="JC Reunion Banner" class="poster-img">
-    </div>
-
     <div class="row justify-content-center pb-5">
       <div class="col-md-8">
         <div class="content-box text-center">
           <h2 class="welcome-title">ยินดีต้อนรับสู่ระบบ JC Reunion 2026</h2>
-          <p class="lead mb-4" style="color: #ccc;">
+          
+          <div class="mb-4">
+            <img src="https://raw.githubusercontent.com/thiti0365/images/main/เสื้อรวมเจซี.png" 
+                 alt="JC Reunion Poster" 
+                 class="poster-img" 
+                 style="max-width: 90%; border: 2px solid var(--jc-gold-dark); border-radius: 10px;"> 
+          </div>
+
+          <p class="lead mb-2">
             กลับมาพบกันอีกครั้งในวาระครบรอบปีที่แสนพิเศษ <br>
             ท่านสามารถดำเนินการซื้อบัตรเข้างาน สั่งซื้อสินค้าเพิ่มเติม <br>
             ได้อย่างสะดวกรวดเร็วผ่านระบบนี้
+          </p>
+          
+          <p class="mb-4" style="color: var(--jc-gold); font-size: 1.15rem; font-weight: 500; text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);">
+            <i class="fa-solid fa-bell fa-shake me-2"></i> ท่านสามารถซื้อบัตรเข้างานได้แล้ววันนี้ จนถึง 31 พ.ค. 2569 นี้เท่านั้น!
           </p>
           
           <div class="py-3">
@@ -135,13 +175,9 @@
             </a>
           </div>
           
-          <p class="mt-4 small text-secondary">
-            <i class="fa-solid fa-shield-halved me-1"></i> ระบบรองรับการชำระเงินและแนบหลักฐานออนไลน์ 24 ชม.
-          </p>
         </div>
       </div>
     </div>
-
   </div>
 
   <footer class="footer-section py-4 mt-auto">
