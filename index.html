@@ -31,16 +31,22 @@
 
     .navbar {
       background-color: #000000;
-      border-bottom: 2px solid var(--jc-purple);
-      /* 🟢 [เพิ่มใหม่] 3 บรรทัดนี้เพื่อให้ Navbar เลื่อนตามตอน Scroll */
+      border-bottom: 2px solid var(--jc-purple-light); /* ใช้สีม่วงสว่างขึ้นเพื่อให้ดูเป็นเส้นแสง */
+      /* 🟢 [เพิ่มใหม่] เงาสีม่วงเรืองแสง (Glow Effect) กระจายลงมาด้านล่าง */
+      box-shadow: 0 4px 25px rgba(155, 79, 150, 0.6); 
       position: sticky;
       top: 0;
-      z-index: 1020; /* บังคับให้อยู่เลเยอร์บนสุด จะได้ไม่โดนเนื้อหาอื่นทับตอนเลื่อน */
+      z-index: 1020; 
     }
 
-    /* Hero Section */
+    /* ปรับ Hero Section เล็กน้อยให้กระชับขึ้น */
     .hero-section {
-      padding: 40px 0;
+      padding: 0; /* เอา padding เก่าออกเพื่อไม่ให้ห่างเกินไป */
+    }
+
+    /* ปรับ Hero Section เล็กน้อยให้กระชับขึ้น */
+    .hero-section {
+      padding: 0; /* เอา padding เก่าออกเพื่อไม่ให้ห่างเกินไป */
     }
     .poster-img {
       width: 100%;
@@ -107,16 +113,16 @@
     </div>
   </nav>
 
-  <div class="container flex-grow-1">
+  <div class="container flex-grow-1 pt-4">
     
-    <div class="hero-section text-center">
+    <div class="hero-section text-center mb-4"> <img src="https://raw.githubusercontent.com/thiti0365/images/main/เสื้อรวมเจซี.png" alt="JC Reunion Banner" class="poster-img">
       <img src="https://raw.githubusercontent.com/thiti0365/images/main/เสื้อรวมเจซี.png" alt="JC Reunion Banner" class="poster-img">
     </div>
 
     <div class="row justify-content-center pb-5">
       <div class="col-md-8">
         <div class="content-box text-center">
-          <h2 class="welcome-title">ยินดีต้อนรับสู่ JC Reunion 2026</h2>
+          <h2 class="welcome-title">ยินดีต้อนรับสู่ระบบ JC Reunion 2026</h2>
           <p class="lead mb-4" style="color: #ccc;">
             กลับมาพบกันอีกครั้งในวาระครบรอบปีที่แสนพิเศษ <br>
             ท่านสามารถดำเนินการซื้อบัตรเข้างาน สั่งซื้อสินค้าเพิ่มเติม <br>
