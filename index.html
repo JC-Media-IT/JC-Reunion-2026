@@ -334,6 +334,15 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
+    // 🟢 1. [เพิ่มใหม่] ฟังก์ชันส่งข้อมูล Log กลับไปที่ GAS แบบเบื้องหลัง (no-cors)
+    function sendTrackEvent(eventName) {
+        // ใช้ URL ของ Web App GAS ปัจจุบันของคุณ
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxXDIql-hfrDwXh2c8aaCt0ZpokwmBNClmrKKYxZu4o-3dUoinJg0Ojt5icQ4Yj4aB1/exec';
+        const trackUrl = GAS_URL + '?action=log&event=' + encodeURIComponent(eventName);
+        
+        // ยิงข้อมูลไปโดยไม่ต้องรอการตอบกลับ และไม่สนใจหน้าจอติดขัด
+        fetch(trackUrl, { mode: 'no-cors' }).catch(e => console.log('Log Error:', e));
+    }
     // 1. ตรวจสอบว่าเป็นระบบ iOS หรือไม่
     function isIOS() {
         return /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -359,6 +368,8 @@
     document.getElementById('login-btn').addEventListener('click', function(e) {
         e.preventDefault(); 
         const targetUrl = this.href; 
+      // 🟢 2. [เพิ่มใหม่] บันทึกเหตุการณ์ลง Sheet เมื่อมีคนกดปุ่มเข้าสู่ระบบ
+        sendTrackEvent('Click_Login_Button');
 
         Swal.fire({
             title: 'กำลังนำท่านเข้าสู่ระบบ',
@@ -400,6 +411,9 @@
                 allowOutsideClick: false
             }).then((result) => {
                 if (result.isConfirmed) {
+                  // 🟢 3. [เพิ่มใหม่] บันทึกเหตุการณ์ลง Sheet เมื่อมีคนกดยืนยันการคัดลอกลิงก์
+                    sendTrackEvent('Copy_iOS_Safari_Link');
+                  
                     navigator.clipboard.writeText(targetUrlToCopy).then(() => {
                         Swal.fire({
                             icon: 'success',
